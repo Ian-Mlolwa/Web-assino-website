@@ -1,3 +1,14 @@
+
+<?php
+session_start();
+
+    include("connection.php");
+    include("functions.php");
+
+    $user_data = check_login($con);
+
+?>
+
 <html Document!>
     <head>
         <!--screen size settings-->
@@ -18,19 +29,47 @@
                 </div>
                 <ul class="nav-bar">
                     <!-- <img src="images/logo.jpeg" width="100px" height="100px"> -->
-                    <li><a href="index.html">Home <ion-icon name="home-outline"></ion-icon></a></li>
-                    <li><a href="login.html">Account <ion-icon name="person-outline"></ion-icon></a></li>
-                    <li><a href="contact.html">Contact Us <ion-icon name="call-outline"></ion-icon></a></li> 
-                    <li><a href="about.html">About Us <ion-icon name="information-circle-outline"></ion-icon></a></li>
-                    <li><input class="search-bar" type="search" name="search" placeholder="search..."><button id="search" type="submit"><ion-icon name="search-outline"></ion-icon></button></li>
+                    <li><a href="index.php">Home <ion-icon name="home-outline"></ion-icon></a></li>
+                    <li><a href="#">2022 Movies</a></li>
+                    <li>                
+                    <div class="dropdown">
+                        <a>Franchise
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="marvel.php">Marvel Movies</a>
+                            <a href="dc.php">DC Movies</a>
+                            <a href="marveltv.php">Marvel TV Shows</a>
+                            <a href="dctv.php">DC TV Shows</a>
+                            <a href="disney.php">Disney World</a>
+                        </div>
+                    </div>
+                    </li>
+
+                    <li>
+                    <div class="dropdown">
+                        <a>
+                            <?php echo $user_data['user_name']; ?><ion-icon name="person-outline"></ion-icon>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="logout.php">Log Out</a>
+                        </div>
+                    </div>
+                </a></li>
                 </ul>
             <!--
                 <ion-icon name="menu-outline" class="menu-icon" onclick="menutoggle()"></ion-icon>
             -->
             </nav>
         </div>
+
+        <!--BODY-->
         <div class="body">
-            <p>This is Contacts</p>
+            <form class="nosubmit">
+                <input class="nosubmit" type="search" placeholder="Search...">
+                <!--<button type="submit">Search</button>-->
+            </form>
+            <h1>CONTACTS</h1>
         </div>
 
         <!--footer-->
@@ -38,23 +77,21 @@
             <div class="footer">
                 <div class="footer-heading footer-1">
                     <h2>Abous Us</h2>
-                    <a href="about.html">Blog</a>
+                    <a href="about.php">Info</a>
                     <a href="#">Demo</a>
                     <a href="#">Customers</a>
-                    <a href="#">investors</a>
                     <a href="#">Terms of Services</a>
                 </div>
                 <div class="footer-heading footer-2">
                     <h2>Contact Us</h2>
-                    <a href="#">Jobs</a>
-                    <a href="#">Supports</a>
-                    <a href="#">Contact</a>
+                    <a href="contact.php">Contact</a>
                 </div>
                 <div class="footer-heading footer-3">
                     <h2>Social Media</h2>
-                    <a href="#">Instagram</a>
-                    <a href="#">Facebook</a>
-                    <a href="#">Youtube</a>
+                    <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                    <a href="https://www.youtube.com/"><ion-icon name="logo-youtube"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
                 </div>
                 <div class="footer-email-form">
                     <h2>Join our newsletter</h2>
@@ -64,7 +101,6 @@
             </div>
         </div>
 
-        
     <script src="script.js"></script> 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
